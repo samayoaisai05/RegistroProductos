@@ -13,6 +13,8 @@
         <!-- Botón para crear un nuevo producto que te redirige a la vista de producto.create-->
         <a href="{{ route('productos.create') }}" class="btn btn-primary mb-3">Crear Producto</a>
 
+        <a href="{{ route('productos.pdf') }}" class="btn btn-secondary mb-3" target="_blank">Generar PDF</a>
+
         <!-- Tabla para mostrar los productos -->
         <table class="table table-bordered">
             <thead>
@@ -22,6 +24,7 @@
                     <th>Descripción</th>
                     <th>Precio</th>
                     <th>Imagen</th>
+                    <th>Acciones</th>
                 </tr>
             </thead>
             <tbody>
@@ -38,6 +41,16 @@
                             <img src="{{ asset('storage/' . $producto->imagen) }}" alt="{{ $producto->nombre }}" class="img-thumbnail" style="max-width: 100px;">
                         @endif
                     </td>
+                    <td>
+                        <!-- Botón para editar el producto -->
+                        <a href="{{ route('productos.edit', $producto->id) }}" class="btn btn-sm btn-warning">Editar</a>
+
+                        <!-- Formulario para eliminar el producto -->
+                        <form action="{{ route('productos.destroy', $producto->id) }}" method="POST" style="display: inline-block;">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('¿Estás seguro de que deseas eliminar este producto?')">Eliminar</button>
+                        </form>
                 </tr>
                 @endforeach
             </tbody>

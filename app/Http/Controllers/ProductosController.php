@@ -8,11 +8,21 @@ use Barryvdh\DomPDF\Facade\Pdf;
 
 class ProductosController extends Controller
 {
+    // creamos la funcion para catalogo
+    public function catalogo(){
+        $productos = Productos::all(); # Obtener todos los productos
+        return view('productos.catalogo', compact('productos'));
+    }
+
+    // creamos la funcion para contacto
+    public function contacto(){
+        return view('productos.contacto');
+    }
 
     // Controlador para generar reportes de productos en formato PDF
     public function pdf(){
         $productos = Productos::all(); # Obtener todos los productos
-        $logo = base64_encode(file_get_contents(public_path('img/logo.png'))); # Ruta del logo para incluir en el PDF
+        $logo = base64_encode(file_get_contents(public_path('img/zonadigital.webp'))); # Ruta del logo para incluir en el PDF
         $totalProductos = $productos->count(); # Contar el total de productos
 
         $pdf = PDF::loadView('productos.pdf', compact('productos', 'logo', 'totalProductos'));

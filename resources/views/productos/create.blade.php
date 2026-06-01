@@ -1,12 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-</head>
-<body>
+@extends('layout.app')
+
+@section('content')
     <div class="container mt-4">
         <h2 class="mb-4">Crear Producto</h2>
 
@@ -38,7 +32,7 @@
             </div>
 
             <button type="submit" class="btn btn-primary">Guardar Producto</button>
+            <a href="{{ route('productos.index') }}" class="btn btn-secondary">Cancelar</a>
         </form>
     </div>
-</body>
-</html>
+@endsection

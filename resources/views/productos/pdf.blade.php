@@ -45,7 +45,13 @@
 
     <div class="encabezado">
 
-        <img src="data:image/png;base64,{{ $logo }}" width="200">
+        <img src="data:image/webp;base64,{{ $logo }}" width="200">
+
+        <!-- Mi nombre y mi correo -->
+        <p>
+            <strong>Marvin Isaí Gómez Samayoa</strong><br>
+            <strong>isai.gomez@zonadigital.com</strong>
+        </p>
 
         <h2>Reporte de productos</h2>
 

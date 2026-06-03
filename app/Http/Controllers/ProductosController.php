@@ -4,10 +4,19 @@ namespace App\Http\Controllers;
 
 use App\Models\Productos;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Barryvdh\DomPDF\Facade\Pdf;
 
 class ProductosController extends Controller
 {
+    // validamos el admin
+    private function validarAdmin(){
+        if (!Auth::check() || Auth::user()->is_admin !== true) {
+            abort(403, 'Acceso no autorizado');
+        }
+    }
+
+
     // creamos la funcion para catalogo
     public function catalogo(){
         $productos = Productos::all(); # Obtener todos los productos
